@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>answer to question 2</title>
+</head>
+
+<body>
+
+    <script>
+        var requestOptions1 = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ key: 'value1' }),
+        };
+
+        var requestOptions2 = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ key: 'value2' }),
+        };
+
+        var requestOptions3 = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ key: 'value3' }),
+        };
+
+        var request1 = fetch('/url1', requestOptions1);
+        var request2 = fetch('/url2', requestOptions2);
+        var request3 = fetch('/url3', requestOptions3);
+
+        Promise.all([request1, request2, request3])
+            .then(function (responses) {
+                // Process the responses
+                var response1 = responses[0];
+                var response2 = responses[1];
+                var response3 = responses[2];
+
+                return Promise.all([response1.json(), response2.json(), response3.json()]);
+            })
+            .then(function (data) {
+                // Process the data from all responses
+                var responseData1 = data[0];
+                var responseData2 = data[1];
+                var responseData3 = data[2];
+
+                console.log(responseData1);
+                console.log(responseData2);
+                console.log(responseData3);
+            })
+            .catch(function (error) {
+                // Handle any errors
+                console.log(error);
+            });
+
+    </script>
+
+
+</body>
+
+</html>

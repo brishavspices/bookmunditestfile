@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>answer to question 1</title>
+</head>
+
+<body>
+
+    <div id="test-1" class="dog" data-id="id-123" data-name="brishav">first div</div>
+
+    <input type="text" id="myInput" value="Initial value">
+
+    <input type="checkbox" id="myCheckbox" checked>
+
+    <select id="mySelect">
+        <option value="option1">Option 1</option>
+        <option value="option2" selected>Option 2</option>
+        <option value="option3">Option 3</option>
+    </select>
+
+    <script>
+
+        // Change the class name of any dom elements
+        var element = document.getElementById('test-1');
+        element.classList.remove('dog');
+        element.classList.add('cat');
+
+        // Get datasets from dom elements
+        var id = element.dataset.id;
+        var name = element.dataset.name;
+
+        // Inject new dom element
+        var newDiv = document.createElement('p');
+        newDiv.className = 'para';
+        newDiv.textContent = 'This is paragraph element';
+        var existingElement = document.getElementById('test-1');
+        existingElement.appendChild(newDiv);
+
+        // Make both ajax and get request
+        var requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ key: 'value' }),
+        };
+
+        // post request
+        fetch('url', requestOptions)
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Request failed.');
+            })
+            .then(function (data) {
+                console.log(data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        // get request
+        fetch('url')
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Request failed.');
+            })
+            .then(function (data) {
+                console.log(data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        // Get and set values from input box/checkbox/select dropdown
+        // Get the value from the input box
+        var inputValue = document.getElementById('myInput').value;
+
+        // Set a new value to the input box
+        document.getElementById('myInput').value = 'New value';
+
+        // Get the value from the checkbox
+        var isChecked = document.getElementById('myCheckbox').checked;
+
+        // Set a new value to the checkbox
+        document.getElementById('myCheckbox').checked = false;
+
+        // Get the selected value from the select dropdown
+        var selectedValue = document.getElementById('mySelect').value;
+
+        // Set a new value to the select dropdown
+        document.getElementById('mySelect').value = 'option3';
+
+    </script>
+
+
+</body>
+
+</html>
